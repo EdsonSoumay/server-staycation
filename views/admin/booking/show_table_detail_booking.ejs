@@ -6,7 +6,7 @@
         <div class="card-body">
           <div class="row">
               <div class="col-md-4">
-                <img src="http://localhost:3000/<%= booking.payments.proofPayment %>" alt="image"  style = "width:100%; display:blok;">
+                <img src="https://mern-admin-staycation.herokuapp.com/<%= booking.payments.proofPayment %>" alt="image"  style = "width:100%; display:blok;">
                     <div class="row ml-1">
                         <% if(booking.payments.status === 'Proses'){ %>
                             <form action="/admin/booking/<%= booking.id %>/confirmation?_method=PUT" method="POST">
