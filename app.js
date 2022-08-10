@@ -6,14 +6,15 @@ var logger = require('morgan');
 const methodOverride = require('method-override') // untuk menghandle put
 const session = require('express-session');
 const flash = require('connect-flash');
+var app = express();
 
 // untuk handle siapa sja yang dapat mengakses API kita
-// app.use((req, res, next)=>{
-//   res.setHeader('Access-Control-Allow-Origin','*') // Origin = url yang ingin di berikan akses API 
-//   res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, PATCH, DELETE, OPTIONS') // method = method dalam penggunaan API 
-//   res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
-//   next(); // agar requestnya tidak berhenti sampai disitu
-// })
+app.use((req, res, next)=>{
+  res.setHeader('Access-Control-Allow-Origin','*') // Origin = url yang ingin di berikan akses API 
+  res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, PATCH, DELETE, OPTIONS') // method = method dalam penggunaan API 
+  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
+  next(); // agar requestnya tidak berhenti sampai disitu
+})
 
 
 //import mongoose
@@ -33,7 +34,6 @@ var usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin')
 const apiRouter = require('./routes/api')
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
