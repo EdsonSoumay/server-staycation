@@ -12,7 +12,7 @@ var app = express();
 app.use((req, res, next)=>{
   res.setHeader('Access-Control-Allow-Origin','*') // Origin = url yang ingin di berikan akses API 
   res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, PATCH, DELETE, OPTIONS') // method = method dalam penggunaan API 
-  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
+  res.setHeader('Access-Control-Allow-Headers','Content-Type', 'Authorization') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
   next(); // agar requestnya tidak berhenti sampai disitu
 })
 
