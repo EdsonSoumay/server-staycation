@@ -9,37 +9,15 @@ const flash = require('connect-flash');
 var app = express();
 
 // untuk handle siapa sja yang dapat mengakses API kita
-// app.use((req, res, next)=>{
-//   res.setHeader('Access-Control-Allow-Origin','*') // Origin = url yang ingin di berikan akses API 
-//   res.setHeader('Access-Control-Allow-Methods','GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS') // method = method dalam penggunaan API 
-//   res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
-//   //res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-//  // res.setHeader('Access-Control-Allow-Headers', '*');
-// ///  res.setHeader('Content-Type', 'multipart/form-data');
-//  next(); // agar requestnya tidak berhenti sampai disitu
-// })
+app.use((req, res, next)=>{
+  res.setHeader('Access-Control-Allow-Origin','*') // Origin = url yang ingin di berikan akses API 
+  res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, PATCH, DELETE, OPTIONS') // method = method dalam penggunaan API 
+  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
+  res.setHeader('Content-Type','application/json') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
+  next(); // agar requestnya tidak berhenti sampai disitu
+})
 
-app.use( function (req, res, next) {
-   res.setHeader("Access-Control-Allow-Origin","*") // Origin = url yang ingin di berikan akses API 
-   res.setHeader("Access-Control-Allow-Methods","GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS") // method = method dalam penggunaan API 
-   res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-   res.setHeader("Content-Type", "application/json");
-   next();
-});
-
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "Origin,X-Requested-With, Content-Type, Accept, Authorization"
-//   );
-//   res.setHeader("Access-Control-Allow-Methods", "GET,POST,PATCH,PUT,DELETE,OPTIONS");
-//   next();
-// });
-
-
-// immport mongoose
-
+//import mongoose
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://127.0.0.1:27017/db_staycation',
 mongoose.connect('mongodb+srv://mern-stayction:YjL12suUWmoczy8p@cluster0.mdbpoal.mongodb.net/db_staycation?retryWrites=true&w=majority',
