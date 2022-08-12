@@ -36,7 +36,8 @@ app.use( function (req, res, next) {
 //   res.setHeader("Access-Control-Allow-Methods", "GET,POST,PATCH,PUT,DELETE,OPTIONS");
 //   next();
 // });
-se
+
+//import mongoose
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://127.0.0.1:27017/db_staycation',
 mongoose.connect('mongodb+srv://mern-stayction:YjL12suUWmoczy8p@cluster0.mdbpoal.mongodb.net/db_staycation?retryWrites=true&w=majority',
