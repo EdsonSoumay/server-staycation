@@ -17,19 +17,28 @@ var app = express();
 //   next(); // agar requestnya tidak berhenti sampai disitu
 // })
 
-app.use((req,res,next)=>{
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,PUT');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Origin, Accept');
-  next();
-})
+// app.use((req,res,next)=>{
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,PUT');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Origin, Accept');
+//   next();
+// })
 
 // app.use((req,res,next)=>{
 //   res.setHeader("Access-Control-Allow-Origin", 'http://localhost:8080');
 //   res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Accept');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type , Accept');
 //   next();
 // })
+
+app.use((req,res,next)=>{
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");  
+  next();
+})
+
 
 //import mongoose
 const mongoose = require('mongoose');
