@@ -42,6 +42,17 @@ app.use(cors())
 //   next();
 // })
 
+//import mongoose
+const mongoose = require('mongoose');
+// mongoose.connect('mongodb://127.0.0.1:27017/db_staycation',
+mongoose.connect('mongodb+srv://mern-stayction:YjL12suUWmoczy8p@cluster0.mdbpoal.mongodb.net/db_staycation?retryWrites=true&w=majority',
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: true
+});
+
 
 
 
@@ -92,16 +103,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-//import mongoose
-const mongoose = require('mongoose');
-// mongoose.connect('mongodb://127.0.0.1:27017/db_staycation',
-mongoose.connect('mongodb+srv://mern-stayction:YjL12suUWmoczy8p@cluster0.mdbpoal.mongodb.net/db_staycation?retryWrites=true&w=majority',
-{
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: true
-});
 
 
 module.exports = app;
