@@ -24,25 +24,16 @@ var app = express();
 //   next();
 // })
 
-// app.use((req,res,next)=>{
-//   res.setHeader("Access-Control-Allow-Origin", 'http://localhost:8080');
-//   res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type , Accept');
-//   next();
-// })
+app.use((req,res,next)=>{
+  res.setHeader("Access-Control-Allow-Origin", '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type , Accept');
+  next();
+})
 
 
 
-//import mongoose
-const mongoose = require('mongoose');
-// mongoose.connect('mongodb://127.0.0.1:27017/db_staycation',
-mongoose.connect('mongodb+srv://mern-stayction:YjL12suUWmoczy8p@cluster0.mdbpoal.mongodb.net/db_staycation?retryWrites=true&w=majority',
-{
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: true
-});
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -83,14 +74,6 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-app.use((req,res,next)=>{
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");  
-  next();
-})
-
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -102,5 +85,18 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+//import mongoose
+const mongoose = require('mongoose');
+// mongoose.connect('mongodb://127.0.0.1:27017/db_staycation',
+mongoose.connect('mongodb+srv://mern-stayction:YjL12suUWmoczy8p@cluster0.mdbpoal.mongodb.net/db_staycation?retryWrites=true&w=majority',
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: true
+});
+
 
 module.exports = app;
