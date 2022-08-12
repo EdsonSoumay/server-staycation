@@ -12,7 +12,7 @@ var app = express();
 // app.use((req, res, next)=>{
 //   res.setHeader('Access-Control-Allow-Origin','*') // Origin = url yang ingin di berikan akses API 
 //   res.setHeader('Access-Control-Allow-Methods','GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS') // method = method dalam penggunaan API 
-//   res.setHeader('Access-Control-Allow-Headers','Content-Type = multipart/form-data  , Authorization') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
+//   res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
 //   //res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
 //  // res.setHeader('Access-Control-Allow-Headers', '*');
 // ///  res.setHeader('Content-Type', 'multipart/form-data');
@@ -20,8 +20,11 @@ var app = express();
 // })
 
 app.use((req, res, next) {
-    res.setHeader("Content-Type", "application/json");
-    next();
+   res.setHeader("Access-Control-Allow-Origin","*") // Origin = url yang ingin di berikan akses API 
+   res.setHeader("Access-Control-Allow-Methods","GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS") // method = method dalam penggunaan API 
+   res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+   res.setHeader("Content-Type", "application/json");
+   next();
 });
 
 // app.use((req, res, next) => {
