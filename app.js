@@ -31,13 +31,6 @@ var app = express();
 //   next();
 // })
 
-app.use((req,res,next)=>{
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");  
-  next();
-})
 
 
 //import mongoose
@@ -89,6 +82,15 @@ app.use('/api/v1/member', apiRouter)
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+app.use((req,res,next)=>{
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");  
+  next();
+})
+
 
 // error handler
 app.use(function(err, req, res, next) {
