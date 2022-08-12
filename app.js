@@ -9,12 +9,19 @@ const flash = require('connect-flash');
 var app = express();
 
 // untuk handle siapa sja yang dapat mengakses API kita
-app.use((req, res, next)=>{
-  res.setHeader('Access-Control-Allow-Origin','*') // Origin = url yang ingin di berikan akses API 
-  res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, PATCH, DELETE, OPTIONS') // method = method dalam penggunaan API 
-  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
-  res.setHeader('Content-Type','application/json') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
-  next(); // agar requestnya tidak berhenti sampai disitu
+// app.use((req, res, next)=>{
+//   res.setHeader('Access-Control-Allow-Origin','*') // Origin = url yang ingin di berikan akses API 
+//   res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, PATCH, DELETE, OPTIONS') // method = method dalam penggunaan API 
+//   res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
+//   res.setHeader('Content-Type','application/json') // Content-Type = contohnya json, (xml, html?) dll. // Authorization = berguna ketika proses pengiriman token kedalam API
+//   next(); // agar requestnya tidak berhenti sampai disitu
+// })
+
+app.use((req,res,next)=>{
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Origin, Accept');
+  next()
 })
 
 //import mongoose
