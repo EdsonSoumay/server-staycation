@@ -19,7 +19,7 @@ var app = express();
 //  next(); // agar requestnya tidak berhenti sampai disitu
 // })
 
-app.use((req, res, next) {
+app.use( function (req, res, next) {
    res.setHeader("Access-Control-Allow-Origin","*") // Origin = url yang ingin di berikan akses API 
    res.setHeader("Access-Control-Allow-Methods","GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS") // method = method dalam penggunaan API 
    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
@@ -36,9 +36,7 @@ app.use((req, res, next) {
 //   res.setHeader("Access-Control-Allow-Methods", "GET,POST,PATCH,PUT,DELETE,OPTIONS");
 //   next();
 // });
-
-
-//import mongoose
+se
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://127.0.0.1:27017/db_staycation',
 mongoose.connect('mongodb+srv://mern-stayction:YjL12suUWmoczy8p@cluster0.mdbpoal.mongodb.net/db_staycation?retryWrites=true&w=majority',
