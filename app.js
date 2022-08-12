@@ -6,7 +6,15 @@ var logger = require('morgan');
 const methodOverride = require('method-override') // untuk menghandle put
 const session = require('express-session');
 const flash = require('connect-flash');
-var app = express();
+const app = express();
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
+//router admin
+const adminRouter = require('./routes/admin')
+const apiRouter = require('./routes/api')
+
 
 // untuk handle siapa sja yang dapat mengakses API kita
 // app.use((req, res, next)=>{
@@ -17,29 +25,23 @@ var app = express();
 //   next(); // agar requestnya tidak berhenti sampai disitu
 // })
 
+app.use((req,res,next)=>{
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Origin, Accept');
+  next()
+})
+
 // app.use((req,res,next)=>{
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,PUT');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Origin, Accept');
+//   res.setHeader("Access-Control-Allow-Origin", '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type , Accept');
 //   next();
 // })
 
-app.use((req,res,next)=>{
-  res.setHeader("Access-Control-Allow-Origin", '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type , Accept');
-  next();
-})
 
 
 
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-//router admin
-const adminRouter = require('./routes/admin')
-const apiRouter = require('./routes/api')
 
 
 // view engine setup
